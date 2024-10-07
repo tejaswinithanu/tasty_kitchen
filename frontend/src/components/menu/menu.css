@@ -1,0 +1,28 @@
+.tab-list{
+    display: flex;
+    flex-direction: row;
+}
+
+.tab-item{
+    list-style-type: none;
+    margin-right: 20px;
+}
+
+.tab-btn{
+    font-size: 18px;
+}
+
+.menu-bar{
+    background-color: rgb(59, 71, 95);
+    padding: 15px 12vw;
+    font-size: 15px;
+    color: white;
+    box-shadow: 5px 5px 10px 2px #888888;
+}
+
+.menu-list{
+    padding: 15px 12vw;
+    background-image:linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250));
+    padding-top:30px;
+    
+}
