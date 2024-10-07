@@ -4,7 +4,7 @@ import { User } from './entities/user.entity';
 import * as bcrypt from 'bcryptjs'
 import { JwtService } from '@nestjs/jwt';
 import { HttpException, HttpStatus } from '@nestjs/common';
-
+ 
 @Injectable()
 export class UserService {
 
