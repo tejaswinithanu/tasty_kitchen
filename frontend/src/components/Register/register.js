@@ -23,7 +23,7 @@ export const Register=()=>{
             "password" : values.password,
             "roles" : values.roles.split(',')
         }
-        let response = await axios.post("http://localhost:3000/user/register",userDetails);
+        let response = await axios.post("http://localhost:8000/user/register",userDetails);
         console.log(response.status,'response');
         setStatus(response.data);
         navigate('/login');
