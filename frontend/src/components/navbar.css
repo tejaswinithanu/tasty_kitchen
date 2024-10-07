@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.herder-component{
+    height: 70px;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logo{
+    font-family: 'Sixtyfour Convergence', sans-serif;
+    font-size: 18px;
+    /* color: white !important;
+    background-color: white !important; */
+}
+
+.signIn-signOut-trolly-container{
+    display: flex;
+}
+
+.trolly{
+    color: white;
+    height: 45px;
+    width: 45px;
+}
+
+.auth {
+    font-family: 'Kanit', sans-serif; /* Paragraph font */
+    font-weight: 400; /* Normal weight */
+    font-size: 1rem; /* Font size */
+    color: white;
+    margin-right: 14px;
+}
+
+.tolly-count{
+   margin-top: -3px !important;
+   color: white;
+}
