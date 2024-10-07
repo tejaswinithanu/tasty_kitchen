@@ -1,20 +1,20 @@
-POST  http://localhost:3000/user/register
+POST  http://localhost:8000/user/register
 Content-Type: application/json
 
 {
-    "email" : "laya2001@gmail.com",
-    "password" : "laya",
+    "email" : "subba2001@gmail.com",
+    "password" : "subba",
     "roles" : ["admin","user"]
 }
 
 ###
 
-POST  http://localhost:3000/user/login
+POST  http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-    "email" : "jahnavipennabadi2001@gmail.com",
-    "password" : "jan",
-    "roles" : ["user","admin"]
+    "email" : "subba2001@gmail.com",
+    "password" : "subba"
     
 }
+
