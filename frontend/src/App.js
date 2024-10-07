@@ -1,6 +1,7 @@
+import { Navbar } from './components/navbar/navbar';
+import { Card } from './components/card/card';
+import { NotFound } from './components/notfound/notFound';
 
-import { Navbar } from './components/navbar';
-import { Card } from './components/card';
 import './App.css';
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
      <Navbar />
      <Card />
+     <NotFound />
     </div>
   );
 }
