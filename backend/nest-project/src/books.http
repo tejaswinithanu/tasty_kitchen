@@ -1,0 +1,20 @@
+GET http://localhost:3000/books
+### 
+
+//get by id 
+GET http://localhost:3000/books/4
+### 
+
+//delete by id 
+DELETE  http://localhost:3000/books/2
+
+###
+POST http://localhost:3000/books
+Content-Type: application/json
+
+{
+   "id" : 1,
+   "name" : "Vivek",
+   "biography" : "kalkji",
+   "photograph" : "png"    
+}
