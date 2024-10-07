@@ -1,15 +1,17 @@
-import logo from './logo.svg';
+import { BrowserRouter, Routes ,Route} from 'react-router-dom';
+import LoginForm from './components/Login';
 import './App.css';
-import { BrowserRouter,Routes,Route} from 'react-router-dom';
-import { Register } from './components/Register/register';
+import  Register  from './components/Register/register';
 
-const App=()=>(
+function App() {
+  return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/register' element={<Register/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
+       <Routes>
+          <Route path='/register' element={<Register/>}/>
+          <Route path = '/login' element = {<LoginForm/>}/>
+       </Routes>
+    </BrowserRouter>   
+)}
 
 
 export default App;
