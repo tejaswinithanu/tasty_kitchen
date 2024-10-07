@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
-import menuSlice from "./menuSlice";
-import {cardSlice} from "./cardSlice"
+import menuReducer from "./menuSlice";
+import cartSlice from "./cardSlice"
+
+// Adjust the path as needed
+
+
 
 export const store=configureStore({
     reducer:{
-        menu:menuSlice,
-        card:cardSlice
+        menu:menuReducer,
+        cart:cartSlice
     }
 })
 
