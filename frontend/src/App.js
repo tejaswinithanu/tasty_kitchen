@@ -1,12 +1,18 @@
-import { Provider } from 'react-redux';
+
 import './App.css';
-import store from './state/store';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Menu } from './components/menu/menu.component';
+
 
 function App() {
   return (
-    <Provider store={store}>
-      Hi
-    </Provider>
+    
+      <BrowserRouter>
+        <Routes>
+            <Route path="/" element={<Menu/>}/>
+        </Routes>
+      </BrowserRouter>
+    
   );
 }
 

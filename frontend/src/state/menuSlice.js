@@ -1,12 +1,12 @@
-const { createSlice } = require("@reduxjs/toolkit");
-const { MenuService } = require("../services/menu.service");
+import  { createSlice } from "@reduxjs/toolkit";
+import  { MenuService } from "../services/menu.service";
 
 const menuService=new MenuService()
 
 const menuSlice=createSlice({
     name:"menu",
     initialState:{
-        menuItems:[]
+        menuItems:menuService.getItemsByCategory('veg')
     },
     reducers:{
         getItemsByCategory:(state,action)=>{
