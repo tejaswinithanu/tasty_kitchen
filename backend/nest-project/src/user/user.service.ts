@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { User } from './entities/user.entity';
 import * as bcrypt from 'bcryptjs'
 import { JwtService } from '@nestjs/jwt';
+import { HttpException, HttpStatus } from '@nestjs/common';
 
 @Injectable()
 export class UserService {
@@ -11,16 +12,42 @@ export class UserService {
     
   }
 
-  async create(data : User): Promise<User> {
-    try{
-      const {email,password,roles} = data
-      const hashedPassword =await bcrypt.hash(password,10)
-      let result =  await this.usermodel.create({email,password:hashedPassword,roles})
-      return result.toJSON()
-    }catch(e){
-      return e
+  // async create(data : User): Promise<User> {
+  //   try{
+  //     const {email,password,roles} = data
+  //     const hashedPassword =await bcrypt.hash(password,10)
+  //     let result =  await this.usermodel.create({email,password:hashedPassword,roles})
+  //     return result.toJSON()
+  //   }catch(e){
+  //     return e
+  //   }
+  //   }
+
+  async create(data: User): Promise<User> {
+    try {
+      const { email, password, roles } = data;
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const result = await this.usermodel.create({
+        email,
+        password: hashedPassword,
+        roles,
+      });
+      return result.toJSON();
+    } catch (e) {
+      if (e.name === 'SequelizeUniqueConstraintError') {
+        // Throw a 400 error with a custom message
+        throw new HttpException(
+          'Email must be unique',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
+      // Throw other unexpected errors
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
-    }
+  }
 
   findAll() {
     return `This action returns all user`;
