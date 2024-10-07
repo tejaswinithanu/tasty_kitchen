@@ -1,7 +1,7 @@
 import { Body, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './entities/user.entity';
-import * as bcrypt from 'bcrypt'
+import * as bcrypt from 'bcryptjs'
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -37,16 +37,18 @@ export class UserService {
     }
   }
 
-  async login(data : User){
-    let {email,password,roles} = data
+  async login({email,password}){
+    
     let userEmail =await this.findOne(email)
     if(userEmail){
       let getPassword = await bcrypt.compare(password,userEmail.password)
-      let payload = {email,roles}
+      let payload = {email,roles : userEmail.roles}
       if(getPassword){
         let result = this.jwtService.sign(payload)
-        return result
+        return {result}
         
+      }else{
+        throw new Error('Invalid Password')
       }
     }else{
       console.log('err')
