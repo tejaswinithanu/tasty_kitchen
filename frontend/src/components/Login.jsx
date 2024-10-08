@@ -1,8 +1,9 @@
 
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
-import userServices from '../services/user.services';
+import userServices from '../Services/user.services';
 import {  useNavigate } from 'react-router-dom';
 const ValidationSchema = yup.object({
     email : yup.string().email('Incorrect Email').required('Email is Required'),
@@ -28,7 +29,7 @@ const LoginForm = () => {
               console.log(response);
               localStorage.setItem('token',response.data)
               console.log(response.status,response);
-              if(response.data.status==400){
+              if(response.data.status===400){
                 setErrorMessage(response.data.response);
               }else{
               navigate('/');
@@ -57,14 +58,16 @@ const LoginForm = () => {
                
                 <ErrorMessage name="password" component="div" {...errorStyle} />
               </div>
-  
+              <div>
+            <span>If you have not yet registerd , regiter here </span><Link to='/register'>register</Link>
+          </div>
               <button className = 'login-button' type="submit" disabled={isSubmitting}>Login</button>
               {error ? <p className='danger'>{error}</p> : ''}
             </Form>
           )}
         </Formik>
         </div>
-
+          
       </div>
     );
   };

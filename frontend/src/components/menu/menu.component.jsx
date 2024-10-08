@@ -23,10 +23,7 @@ export const Menu=()=>{
         dispatch(getItemsByCategory(tabId))
     }
 
-    const logout=()=>{
-        localStorage.removeItem('token');
-        return navigate('/login');
-    }
+    
     return(
         <div>
             <div className="menu-bar">
@@ -40,10 +37,9 @@ export const Menu=()=>{
                             </li>
                         ))
                     }
-                        <button onClick={logout} className='btn btn-outline-primary cart-btn'>Logout</button>
                 </ul>
             </div>
-            <div className="menu-list">
+            <div>
                 <ul>
                 {
                     menuList.map(eachItem=>(
