@@ -2,7 +2,7 @@ import axios from 'axios'
 
 let API_URL = 'http://localhost:8000'
 class UserServices{
-    constructor(){}
+    
 
     async loginUser(data) {
         try {
