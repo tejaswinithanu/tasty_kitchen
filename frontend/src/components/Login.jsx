@@ -2,8 +2,9 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
-import userServices from '../services/user.services';
+import userServices from '../Services/user.services';
 import {  useNavigate } from 'react-router-dom';
+
 const ValidationSchema = yup.object({
     email : yup.string().email('Incorrect Email').required('Email is Required'),
     password : yup.string().required('Password is Required')

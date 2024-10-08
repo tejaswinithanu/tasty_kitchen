@@ -7,7 +7,7 @@ export const Navbar =()=>{
     const countTolly = useSelector(state=>state.cart.totalTollyCount)
     return(
     <div className="herder-component">
-        <h1 className="logo">TASTY KITCHEN</h1>
+        <Link to="/"><h1 className="logo">TASTY KITCHEN</h1></Link>
         <div className="signIn-signOut-trolly-container">
             <p className="auth pt-2">SignUp</p>
             <p className="auth pt-2">SignIn</p>
