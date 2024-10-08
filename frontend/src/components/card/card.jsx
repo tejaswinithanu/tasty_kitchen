@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch,useSelector} from "react-redux";
+import { MdDeliveryDining } from "react-icons/md";
 import {removeItem,incQuantity,decQuantity} from "../../state/cardSlice";
 import './card.css'
 
@@ -7,7 +8,7 @@ import './card.css'
 export const Card = () => {
     const dispatch = useDispatch();
     const cardData = useSelector((state)=>state.cart.cartData);
-    const newcount = useSelector((state)=> state.cart.count);
+    // const newcount = useSelector((state)=> state.cart.count);
    
     const incCount=(id)=>{
         dispatch(incQuantity(id));
@@ -24,7 +25,7 @@ export const Card = () => {
 
     return (
         <div style={{ padding: "20px" }}>
-            <h1>Order Menu</h1>
+            <h1 style={{textAlign:'center'}}>Order Menu</h1>
             <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-around",alignItems:"center" }}>
                 {cardData.map(order => (
                     <div key={order.id} style={{ border: "1px solid #ccc", margin:"10px",borderRadius: "8px", padding: "10px", width: "900px", display:"flex",justifyContent:"space-between"}}>
@@ -36,13 +37,16 @@ export const Card = () => {
                         <div>
                             <p className='quantity-container'>
                                 <button className='btn-none-style' onClick={()=>decCount(order.id)}>-</button>
-                                 {newcount}
+                                 {order.quantity}
                                 <button className='btn-none-style' onClick={()=>incCount(order.id)}>+</button>
                             </p>
                             <button className="btn btn-primary" style = {{cursor : 'pointer'}} onClick={()=>handleRemove(order.id)}>remove</button>
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className='aligin-item-end'>
+                <button className='btn btn-info ' style={{color:"white" }}>Place The Order<MdDeliveryDining style={{color:"blue",marginLeft:"15px",width:"25px",height:"25px"}}/></button>
             </div>
         </div>
     );

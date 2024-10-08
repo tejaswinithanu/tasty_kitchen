@@ -12,3 +12,11 @@
     background-color: none;
     color: blue;
 }
+
+.aligin-item-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 10px;
+    margin-left: 45px;
+}
