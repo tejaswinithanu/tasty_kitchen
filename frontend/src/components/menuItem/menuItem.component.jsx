@@ -1,16 +1,25 @@
 import {useDispatch} from 'react-redux'
 
-import { addCartItem } from '../../state/cartSlice'
+import { addCartItem, incQuantity } from '../../state/cartSlice'
 import './menuItem.css'
 
 export const MenuItem=({itemDetails})=>{
 
-    let {name,cover,description,price}=itemDetails
-   // let cartItems=useSelector(state=>state.cart.cartData)
+    let {name,cover,description,price,id}=itemDetails
+    let cartItems=useSelector(state=>state.cart.cartData)
     let dispatch=useDispatch()
 
     const handleAddToCart=()=>{
-        dispatch(addCartItem({...itemDetails,quantity:1}))
+        let cartItem;
+        if(cartItems){
+            cartItem=cartItems.find(eachItem=>eachItem.id===id)
+        }
+        if (cartItem){
+            dispatch(incQuantity(id))
+        }else{
+            dispatch(addCartItem({...itemDetails,quantity:1,totalPrice:price}))
+        }
+        
     }
     return(
         <li className="menu-item">
