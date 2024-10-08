@@ -1,9 +1,10 @@
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 import { addCartItem, incQuantity } from '../../state/cartSlice'
 import './menuItem.css'
 
 export const MenuItem=({itemDetails})=>{
+
     let {name,cover,description,price,id}=itemDetails
     let cartItems=useSelector(state=>state.cart.cartData)
     let dispatch=useDispatch()
