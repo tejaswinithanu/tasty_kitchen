@@ -1,0 +1,22 @@
+.quantity-container{
+    border: 1px solid pink;
+    padding: 8px;
+    border-radius: 10px;
+    width: 120px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-none-style{
+    border: 0px;
+    background-color: none;
+    color: blue;
+}
+
+.aligin-item-end{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 10px;
+    margin-left: 45px;
+}
