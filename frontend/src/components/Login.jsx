@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
@@ -42,7 +41,6 @@ const LoginForm = () => {
                 <label className='login-label'>Email</label>
                 <br/>
                 <Field type="email" className = 'email-field' name="email"/>
-               
                 <ErrorMessage name="email" component="div" {...errorStyle} />
               </div>
               <br/>
@@ -50,10 +48,8 @@ const LoginForm = () => {
                 <label>Password</label>
                 <br/>
                 <Field type="password" className = 'email-field' name="password"/>
-               
                 <ErrorMessage name="password" component="div" {...errorStyle} />
-              </div>
-  
+              </div> 
               <button className = 'login-button' type="submit" disabled={isSubmitting}>Login</button>
               {error ? <p>{error}</p> : ''}
             </Form>
