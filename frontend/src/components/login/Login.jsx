@@ -2,8 +2,9 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
-import userServices from '../Services/user.services';
+import userServices from '../../Services/user.services';
 import {  useNavigate } from 'react-router-dom';
+import "./login.css";
 
 const ValidationSchema = yup.object({
     email : yup.string().email('Incorrect Email').required('Email is Required'),
@@ -16,12 +17,14 @@ const LoginForm = () => {
     let [error,setErrorMessage] = useState('')
     let navigate = useNavigate()
     return (
-      <div className='form-container'>
+      <div className='login-component-main'>
+      <div className='login-component'>
         <h1>Login</h1>
-        <div>    
+       
           <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={ValidationSchema}
+          className="align-items-center"
           onSubmit={async (values, { setSubmitting }) => {
             
             try {
@@ -55,13 +58,13 @@ const LoginForm = () => {
                 <ErrorMessage name="password" component="div" {...errorStyle} />
               </div>
   
-              <button className = 'login-button' type="submit" disabled={isSubmitting}>Login</button>
+              <button className ='btn btn-primary mt-2' type="submit" disabled={isSubmitting}>Login</button>
               {error ? <p>{error}</p> : ''}
             </Form>
           )}
         </Formik>
-        </div>
-
+       
+      </div>
       </div>
     );
   };

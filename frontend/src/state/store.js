@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import menuReducer from "./menuSlice";
-import cartSlice from "./cardSlice"
+import cartSlice from "./cartSlice"
 
 // Adjust the path as needed
 

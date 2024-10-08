@@ -1,11 +1,11 @@
 import React from 'react';
 import {useDispatch,useSelector} from "react-redux";
 import { MdDeliveryDining } from "react-icons/md";
-import {removeItem,incQuantity,decQuantity} from "../../state/cardSlice";
-import './card.css'
+import {removeItem,incQuantity,decQuantity} from "../../state/cartSlice";
+import './cart.css'
 
 
-export const Card = () => {
+export const Cart = () => {
     const dispatch = useDispatch();
     const cardData = useSelector((state)=>state.cart.cartData);
     // const newcount = useSelector((state)=> state.cart.count);
