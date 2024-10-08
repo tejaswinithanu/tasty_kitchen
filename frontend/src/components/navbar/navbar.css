@@ -1,0 +1,61 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.herder-component{
+    height: 70px;
+    background-image: linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250));
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logo{
+    
+    font-family: "Georgia";
+    color: white;
+    font-weight: 700;
+    text-shadow: 4px 4px 4px rgb(68, 67, 67);
+}
+
+.logo-link{
+    text-decoration: none;
+}
+
+.signIn-signOut-trolly-container{
+    display: flex;
+}
+
+.trolly{
+    color: white;
+    height: 45px;
+    width: 45px;
+}
+
+.auth {
+    font-family: 'Kanit', sans-serif; /* Paragraph font */
+    font-weight: 400; /* Normal weight */
+    font-size: 1rem; /* Font size */
+    color: white;
+    margin-right: 14px;
+}
+
+.tolly-count{
+   margin-top: -3px !important;
+   color: white;
+}
+.logout-btn{
+    background-color:transparent;
+    color:white;
+    border:1px solid white;
+    border-radius:10px;
+    padding:5px 10px 5px 10px;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background-color:white;
+    color: blue;
+}

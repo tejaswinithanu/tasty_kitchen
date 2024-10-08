@@ -14,15 +14,20 @@
 
 .menu-bar{
     background-color: rgb(59, 71, 95);
-    padding: 15px 12vw;
+    padding: 8px 12vw;
     font-size: 15px;
     color: white;
     box-shadow: 5px 5px 10px 2px #888888;
 }
 
 .menu-list{
-    padding: 15px 12vw;
+    /* padding: 15px 12vw; */
     background-image:linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250));
-    padding-top:30px;
+    /* padding-top:30px; */
     
+}
+
+.component-body{
+    padding: 15px 12vw; 
+    padding-top:30px;
 }
