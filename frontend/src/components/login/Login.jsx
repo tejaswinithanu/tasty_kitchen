@@ -1,9 +1,8 @@
-
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup'
 import userServices from '../../Services/user.services';
-import {  useNavigate } from 'react-router-dom';
+import * as yup from 'yup';
+import {  useNavigate,Link } from 'react-router-dom';
 import "./login.css";
 
 const ValidationSchema = yup.object({
@@ -29,14 +28,18 @@ const LoginForm = () => {
             
             try {
               let response = await userServices.loginUser(values)
+              console.log(response);
               localStorage.setItem('token',response.data)
-              console.log(response.data)
-              navigate('/')
-              
+              console.log(response.status,response);
+              if(response.data.status===400){
+                setErrorMessage(response.data.response);
+              }else{
+              navigate('/');
+              }
             } catch (error) {
-              setErrorMessage("Error Triggered")
+              setErrorMessage("Error Triggered");
             }finally{
-              setSubmitting(false)
+              setSubmitting(false);
             }
           }}
         >
@@ -46,7 +49,6 @@ const LoginForm = () => {
                 <label className='login-label'>Email</label>
                 <br/>
                 <Field type="email" className = 'email-field' name="email"/>
-               
                 <ErrorMessage name="email" component="div" {...errorStyle} />
               </div>
               <br/>
@@ -54,17 +56,19 @@ const LoginForm = () => {
                 <label>Password</label>
                 <br/>
                 <Field type="password" className = 'email-field' name="password"/>
-               
                 <ErrorMessage name="password" component="div" {...errorStyle} />
               </div>
-  
+
+              <div>
+            <span>If you have not yet registerd , regiter here </span><Link to='/register'>register</Link>
+          </div>
               <button className ='btn btn-primary mt-2' type="submit" disabled={isSubmitting}>Login</button>
-              {error ? <p>{error}</p> : ''}
+              {error ? <p className='danger'>{error}</p> : ''}
             </Form>
           )}
         </Formik>
-       
-      </div>
+        </div>
+          
       </div>
     );
   };
