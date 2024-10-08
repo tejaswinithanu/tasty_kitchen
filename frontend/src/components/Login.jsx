@@ -25,14 +25,18 @@ const LoginForm = () => {
             
             try {
               let response = await userServices.loginUser(values)
+              console.log(response);
               localStorage.setItem('token',response.data)
-              console.log(response.data)
-              navigate('/')
-              
+              console.log(response.status,response);
+              if(response.data.status==400){
+                setErrorMessage(response.data.response);
+              }else{
+              navigate('/');
+              }
             } catch (error) {
-              setErrorMessage("Error Triggered")
+              setErrorMessage("Error Triggered");
             }finally{
-              setSubmitting(false)
+              setSubmitting(false);
             }
           }}
         >
@@ -55,7 +59,7 @@ const LoginForm = () => {
               </div>
   
               <button className = 'login-button' type="submit" disabled={isSubmitting}>Login</button>
-              {error ? <p>{error}</p> : ''}
+              {error ? <p className='danger'>{error}</p> : ''}
             </Form>
           )}
         </Formik>

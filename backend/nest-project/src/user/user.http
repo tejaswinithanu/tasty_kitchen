@@ -13,7 +13,7 @@ POST  http://localhost:8000/user/login
 Content-Type: application/json
 
 {
-    "email" : "subba2001@gmail.com",
+    "email" : "subb2001@gmail.com",
     "password" : "subba"
     
 }

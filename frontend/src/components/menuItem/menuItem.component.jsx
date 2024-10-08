@@ -2,6 +2,9 @@ import './menuItem.css'
 
 export const MenuItem=({itemDetails})=>{
     let {name,cover,description}=itemDetails
+    let logout = ()=>{
+        localStorage.removeItem('token');
+    }
     return(
         <li className="menu-item">
             <div className='item-details'>

@@ -7,7 +7,7 @@ class UserServices{
     async loginUser(data) {
         try {
             const response = await axios.post('http://localhost:8000/user/login', data);
-            console.log(response.data.token)
+            console.log(response.data)
             return response; // Return user data or token
         } catch (error) {
             console.error('Error logging in:', error.response.data); // Log the error response

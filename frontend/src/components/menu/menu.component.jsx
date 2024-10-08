@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { MenuItem } from "../menuItem/menuItem.component"
 import {getItemsByCategory} from '../../state/menuSlice'
+import { useNavigate } from "react-router-dom"
 import './menu.css'
 
 const tabs=[
@@ -16,12 +17,16 @@ const tabs=[
 
 export const Menu=()=>{
     const menuList=useSelector(state=>state.menu.menuItems)
-    const dispatch=useDispatch()
-
+    const dispatch=useDispatch();
+    let navigate = useNavigate();
     const handleTabChange=(tabId)=>{
         dispatch(getItemsByCategory(tabId))
     }
 
+    const logout=()=>{
+        localStorage.removeItem('token');
+        return navigate('/login');
+    }
     return(
         <div>
             <div className="menu-bar">
@@ -35,6 +40,7 @@ export const Menu=()=>{
                             </li>
                         ))
                     }
+                        <button onClick={logout} className='btn btn-outline-primary cart-btn'>Logout</button>
                 </ul>
             </div>
             <div className="menu-list">
