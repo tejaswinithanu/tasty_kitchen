@@ -45,3 +45,17 @@
    margin-top: -3px !important;
    color: white;
 }
+.logout-btn{
+    background-color:transparent;
+    color:white;
+    border:1px solid white;
+    border-radius:10px;
+    padding:5px 10px 5px 10px;
+    margin-right:10px;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background-color:white;
+    color: blue;
+}

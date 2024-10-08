@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as yup from 'yup'
 import userServices from '../Services/user.services';
@@ -24,14 +25,18 @@ const LoginForm = () => {
             
             try {
               let response = await userServices.loginUser(values)
+              console.log(response);
               localStorage.setItem('token',response.data)
-              console.log(response.data)
-              navigate('/')
-              
+              console.log(response.status,response);
+              if(response.data.status===400){
+                setErrorMessage(response.data.response);
+              }else{
+              navigate('/');
+              }
             } catch (error) {
-              setErrorMessage("Error Triggered")
+              setErrorMessage("Error Triggered");
             }finally{
-              setSubmitting(false)
+              setSubmitting(false);
             }
           }}
         >
@@ -49,14 +54,17 @@ const LoginForm = () => {
                 <br/>
                 <Field type="password" className = 'email-field' name="password"/>
                 <ErrorMessage name="password" component="div" {...errorStyle} />
-              </div> 
+              </div>
+              <div>
+            <span>If you have not yet registerd , regiter here </span><Link to='/register'>register</Link>
+          </div>
               <button className = 'login-button' type="submit" disabled={isSubmitting}>Login</button>
-              {error ? <p>{error}</p> : ''}
+              {error ? <p className='danger'>{error}</p> : ''}
             </Form>
           )}
         </Formik>
         </div>
-
+          
       </div>
     );
   };

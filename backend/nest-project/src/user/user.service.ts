@@ -67,6 +67,7 @@ export class UserService {
   async login({email,password}){
     
     let userEmail =await this.findOne(email)
+    console.log(userEmail);
     if(userEmail){
       let getPassword = await bcrypt.compare(password,userEmail.password)
       let payload = {email,roles : userEmail.roles}
@@ -78,7 +79,7 @@ export class UserService {
         throw new Error('Invalid Password')
       }
     }else{
-      console.log('err')
+      return new HttpException('user not registerd',HttpStatus.BAD_REQUEST);
     }
 
   }

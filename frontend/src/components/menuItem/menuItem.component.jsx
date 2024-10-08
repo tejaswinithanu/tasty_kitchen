@@ -1,11 +1,12 @@
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 
 import { addCartItem } from '../../state/cartSlice'
 import './menuItem.css'
 
 export const MenuItem=({itemDetails})=>{
+
     let {name,cover,description,price}=itemDetails
-    let cartItems=useSelector(state=>state.cart.cartData)
+   // let cartItems=useSelector(state=>state.cart.cartData)
     let dispatch=useDispatch()
 
     const handleAddToCart=()=>{
