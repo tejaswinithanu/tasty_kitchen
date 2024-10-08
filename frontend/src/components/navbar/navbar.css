@@ -1,8 +1,9 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .herder-component{
     height: 70px;
-    background-color: blue;
+    background-image: linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -11,10 +12,15 @@
 }
 
 .logo{
-    font-family: 'Sixtyfour Convergence', sans-serif;
-    font-size: 18px;
-    /* color: white !important;
-    background-color: white !important; */
+    
+    font-family: "Georgia";
+    color: white;
+    font-weight: 700;
+    text-shadow: 4px 4px 4px rgb(68, 67, 67);
+}
+
+.logo-link{
+    text-decoration: none;
 }
 
 .signIn-signOut-trolly-container{
