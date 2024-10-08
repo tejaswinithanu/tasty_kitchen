@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import * as yup from 'yup'
-import userServices from '../Services/user.services';
-import {  useNavigate } from 'react-router-dom';
+import userServices from '../../Services/user.services';
+import * as yup from 'yup';
+import {  useNavigate,Link } from 'react-router-dom';
+import "./login.css";
+
 const ValidationSchema = yup.object({
     email : yup.string().email('Incorrect Email').required('Email is Required'),
     password : yup.string().required('Password is Required')
@@ -15,12 +16,14 @@ const LoginForm = () => {
     let [error,setErrorMessage] = useState('')
     let navigate = useNavigate()
     return (
-      <div className='form-container'>
+      <div className='login-component-main'>
+      <div className='login-component'>
         <h1>Login</h1>
-        <div>    
+       
           <Formik
           initialValues={{ email: '', password: '' }}
           validationSchema={ValidationSchema}
+          className="align-items-center"
           onSubmit={async (values, { setSubmitting }) => {
             
             try {
@@ -55,10 +58,11 @@ const LoginForm = () => {
                 <Field type="password" className = 'email-field' name="password"/>
                 <ErrorMessage name="password" component="div" {...errorStyle} />
               </div>
+
               <div>
             <span>If you have not yet registerd , regiter here </span><Link to='/register'>register</Link>
           </div>
-              <button className = 'login-button' type="submit" disabled={isSubmitting}>Login</button>
+              <button className ='btn btn-primary mt-2' type="submit" disabled={isSubmitting}>Login</button>
               {error ? <p className='danger'>{error}</p> : ''}
             </Form>
           )}

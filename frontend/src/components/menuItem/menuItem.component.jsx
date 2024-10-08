@@ -6,7 +6,7 @@ import './menuItem.css'
 export const MenuItem=({itemDetails})=>{
 
     let {name,cover,description,price}=itemDetails
-   // let cartItems=useSelector(state=>state.cart.cartData)
+    //  let cartItems=useSelector(state=>state.cart.cartData)
     let dispatch=useDispatch()
 
     const handleAddToCart=()=>{
@@ -22,7 +22,6 @@ export const MenuItem=({itemDetails})=>{
                 <h6>Rs. {price}/-</h6>
             </div>
             </div>
-            
             <button onClick={handleAddToCart} className='btn btn-outline-primary cart-btn'>Add to cart</button>
         </li>
     )
