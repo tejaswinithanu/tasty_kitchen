@@ -20,3 +20,10 @@
     margin-top: 10px;
     margin-left: 45px;
 }
+
+.empty-cart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

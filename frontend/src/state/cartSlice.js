@@ -20,7 +20,7 @@ const cartSlice = createSlice({
         incQuantity(state, action) {
             state.cartData = state.cartData.map((cartItem)=> {
             if(cartItem.id === action.payload){
-                return { ...cartItem, quantity:cartItem.quantity += 1}
+                return { ...cartItem, quantity:cartItem.quantity += 1,totalPrice:cartItem.totalPrice+cartItem.price}
             }
             return cartItem;
            });
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
                     if(cartItem.quantity === 1){
                        return cartItem;
                     }
-                    return { ...cartItem, quantity:cartItem.quantity -= 1}
+                    return { ...cartItem, quantity:cartItem.quantity -= 1,totalPrice:cartItem.totalPrice-cartItem.price}
                 }
                 return cartItem;
                });
