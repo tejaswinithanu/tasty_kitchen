@@ -1,5 +1,5 @@
 import  { createSlice } from "@reduxjs/toolkit";
-import  { MenuService } from "../Services/menu.service";
+import  { MenuService } from "../services/menu.service";
 
 const menuService=new MenuService()
 
