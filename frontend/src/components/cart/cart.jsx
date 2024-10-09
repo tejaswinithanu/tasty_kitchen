@@ -4,6 +4,13 @@ import { MdDeliveryDining } from "react-icons/md";
 import {removeItem,incQuantity,decQuantity} from "../../state/cartSlice";
 import './cart.css'
 
+const EnptyCart=()=>{
+    return(
+        <div>
+            Your cart is empty
+        </div>
+    )
+}
 
 export const Cart = () => {
     const dispatch = useDispatch();
