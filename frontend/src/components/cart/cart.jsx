@@ -5,6 +5,7 @@ import {removeItem,incQuantity,decQuantity,handleClosePopUp,handleShowPopUp} fro
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './cart.css'
+import { Link } from 'react-router-dom';
 
 export const Cart = () => {
     const dispatch = useDispatch();
@@ -14,8 +15,8 @@ export const Cart = () => {
     
     const incCount=(item)=>{
         dispatch(incQuantity(item));
-    }
-
+      
+    
     const decCount=(item)=>{
         dispatch(decQuantity(item))
     }
@@ -31,30 +32,45 @@ const handleClose = () => {
   const handleShow = () => {
       dispatch(handleShowPopUp())
   };
-  
+
+const EmptyCart=()=>{
+    return(
+        <div className='empty-cart'>
+            <img alt="empty" src="https://res.cloudinary.com/dqqijdyjr/image/upload/v1728378752/enkebix93r6xyw7pl9b3.png"/>
+            <h2 className='mt-0'>Your cart is empty</h2>
+            <Link to="/">
+            <button className='btn btn-outline-primary mt-3'>Order now!</button>
+            </Link>
+        </div>
+    )
+}
+
     return (
-        <div style={{ padding: "20px" }}>
-            <h1 style={{textAlign:'center'}}>Order Menu</h1>
-            <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-around",alignItems:"center" }}>
-                {cardData.map(order => (
-                    <div key={order.id} style={{ border: "1px solid #ccc", margin:"10px",borderRadius: "8px", padding: "10px", width: "900px", display:"flex",justifyContent:"space-between"}}>
-                        <div>
-                           <h4>{order.name}</h4>
-                           <p>Quantity: {order.quantity}</p>
-                           <p>Price: {order.price}</p>
-                        </div>
-                        <div>
-                            <p className='quantity-container'>
-                                <button className='btn-none-style' onClick={()=>decCount(order)}>-</button>
-                                 {order.quantity}
-                                <button className='btn-none-style' onClick={()=>incCount(order)}>+</button>
-                            </p>
-                            <button className="btn btn-primary" style = {{cursor : 'pointer'}} onClick={()=>handleRemove(order.id)}>remove</button>
-                        </div>
+            {
+                cartData.length !==0? 
+                (
+                <div>
+                    <h1 style={{textAlign:'center'}}>Order Menu</h1>
+                    <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-around",alignItems:"center" }}>
+                        {cartData.map(order => (
+                            <div key={order.id} style={{ border: "1px solid #ccc", margin:"10px",borderRadius: "8px", padding: "10px", width: "900px", display:"flex",justifyContent:"space-between"}}>
+                                <div>
+                                <h4>{order.name}</h4>
+                                <p>Quantity: {order.quantity}</p>
+                                <p>Price: {order.totalPrice}</p>
+                                </div>
+                                <div>
+                                    <p className='quantity-container'>
+                                        <button className='btn-none-style' onClick={()=>decCount(order)}>-</button>
+                                        {order.quantity}
+                                        <button className='btn-none-style' onClick={()=>incCount(order)}>+</button>
+                                    </p>
+                                    <button className="btn btn-primary" style = {{cursor : 'pointer'}} onClick={()=>handleRemove(order.id)}>remove</button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
-                ))}
-            </div>
-            <div>
+                     <div>
                 <h4 style={{margin:"8px"}}>Total Price: <span>{price}</span></h4>
             </div>
       <div className='aligin-item-end'>
@@ -67,6 +83,13 @@ const handleClose = () => {
         <Modal.Body>we deliver your order within 25 minutes enjoy your FOOD</Modal.Body>
         <div className='delivery-icon-container'><MdDeliveryDining className='animated-element bounce-out-right' style={{color:"blue",marginLeft:"15px",width:"45px",height:"45px"}}/></div>
       </Modal>
+                </div>
+                ):
+                (
+                    <EmptyCart/>
+                )
+            }
+            
         </div>
     );
 };
