@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-
+import { useEffect } from 'react';
 import * as yup from 'yup';
 import {  useNavigate,Link } from 'react-router-dom';
 import "./login.css";
@@ -16,6 +16,12 @@ const errorStyle = {style : {color : "Red"}}
 const LoginForm = () => {
     let [error,setErrorMessage] = useState('')
     let navigate = useNavigate()
+    useEffect(()=>{
+      let token = localStorage.getItem('token');
+      if(token){
+        navigate('/');
+      }
+    },[]);
     return (
       <div className='login-component-main'>
       <div className='login-component'>
