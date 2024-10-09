@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { MenuItem } from "../menuItem/menuItem.component"
 import {getItemsByCategory} from '../../state/menuSlice'
-import { useNavigate } from "react-router-dom"
+// import { useNavigate } from "react-router-dom"
 import './menu.css'
 
 const tabs=[
@@ -18,7 +18,7 @@ const tabs=[
 export const Menu=()=>{
     const menuList=useSelector(state=>state.menu.menuItems)
     const dispatch=useDispatch();
-    let navigate = useNavigate();
+    // let navigate = useNavigate();
     const handleTabChange=(tabId)=>{
         dispatch(getItemsByCategory(tabId))
     }

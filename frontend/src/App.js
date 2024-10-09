@@ -2,7 +2,7 @@ import { Register } from './components/Register/register';
 import { RouteProtector } from './components/RouteProtecter';
 import { Cart } from './components/cart/cart';
 import { NotFound } from './components/notfound/notFound';
-import LoginForm from './components/Login';
+import LoginForm from './components/login/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home } from './components/home/home.component';
