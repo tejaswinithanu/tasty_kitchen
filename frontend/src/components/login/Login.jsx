@@ -44,7 +44,7 @@ const LoginForm = () => {
           }}
         >
           {({ isSubmitting }) => (
-            <Form>
+            <Form  className="align-items-center">
               <div>
                 <label className='login-label'>Email</label>
                 <br/>
@@ -60,10 +60,10 @@ const LoginForm = () => {
               </div>
 
               <div>
-            <span>If you have not yet registerd , regiter here </span><Link to='/register'>register</Link>
+            <span style={{textAlign:"center"}}>If you have not yet registerd , regiter here </span><Link to='/register'>register</Link>
           </div>
               <button className ='btn btn-primary mt-2' type="submit" disabled={isSubmitting}>Login</button>
-              {error ? <p className='danger'>{error}</p> : ''}
+              {error ? <p className='danger text-center'>{error}</p> : ''}
             </Form>
           )}
         </Formik>

@@ -4,7 +4,6 @@ import { Menu } from "../menu/menu.component"
 export const Home=()=>{
     return(
         <>
-        
         <Menu/>
         </>
     )

@@ -6,7 +6,6 @@ import './menuItem.css'
 export const MenuItem=({itemDetails})=>{
 
     let {name,cover,description,price}=itemDetails
-    //  let cartItems=useSelector(state=>state.cart.cartData)
     let dispatch=useDispatch()
 
     const handleAddToCart=()=>{
