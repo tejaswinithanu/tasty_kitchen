@@ -33,14 +33,15 @@ export const Register=()=>{
     }
     }
 
-    return <div className="register-container">
-        <h2>Register</h2>
+    return <div className="register-container register-component">
+       
 <Formik
     initialValues={{email:'',password:'',roles:''}}
     validationSchema={validationSchema}
     onSubmit = {onSubmit}
 >
-    <Form>
+    <Form className="register-form">
+    <h2>Register</h2>
         <div>
             <label className="formik-label" htmlFor='email'>Email</label>
             <Field className='formik-input' name="email" id='email' type='email' placeholder='Enter you email address'/>
@@ -56,10 +57,10 @@ export const Register=()=>{
             <Field className='formik-input' name="roles" id='roles' type='text' placeholder="Enter space seperated roles"/>
             <ErrorMessage name="roles" component="div" className="danger"/>
         </div>
-        <button type='submit' className="formik-button">Submit</button>
+        <button type='submit' className="btn btn-primary">Submit</button>
     </Form>
     
 </Formik>
-<p>{status}</p>
+<p style={{textAlign:"center"}}>{status}</p>
     </div>
 }
