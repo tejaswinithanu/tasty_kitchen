@@ -39,7 +39,7 @@ export const Menu=()=>{
                     }
                 </ul>
             </div>
-            <div>
+            <div className="component-body">
                 <ul>
                 {
                     menuList.map(eachItem=>(

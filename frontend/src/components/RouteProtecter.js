@@ -13,7 +13,7 @@ export const RouteProtector = ({ children }) => {
     return (
         <div className='menu-list'>
             <Navbar/>
-                <div className="component-body">
+                <div>
                     {children}
                 </div>
         </div>
