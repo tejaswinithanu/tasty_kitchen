@@ -9,13 +9,13 @@ import { Link } from 'react-router-dom';
 
 export const Cart = () => {
     const dispatch = useDispatch();
-    const cardData = useSelector((state)=>state.cart.cartData);
+    const cartData = useSelector((state)=>state.cart.cartData);
     const show = useSelector(state =>state.cart.show);
     const price = useSelector(state =>state.cart.price)
     
     const incCount=(item)=>{
         dispatch(incQuantity(item));
-      
+    }
     
     const decCount=(item)=>{
         dispatch(decQuantity(item))
@@ -46,52 +46,50 @@ const EmptyCart=()=>{
 }
 
     return (
-            {
-                cartData.length !==0? 
-                (
-                <div>
-                    <h1 style={{textAlign:'center'}}>Order Menu</h1>
-                    <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-around",alignItems:"center" }}>
-                        {cartData.map(order => (
-                            <div key={order.id} style={{ border: "1px solid #ccc", margin:"10px",borderRadius: "8px", padding: "10px", width: "900px", display:"flex",justifyContent:"space-between"}}>
-                                <div>
-                                <h4>{order.name}</h4>
-                                <p>Quantity: {order.quantity}</p>
-                                <p>Price: {order.totalPrice}</p>
-                                </div>
-                                <div>
-                                    <p className='quantity-container'>
-                                        <button className='btn-none-style' onClick={()=>decCount(order)}>-</button>
-                                        {order.quantity}
-                                        <button className='btn-none-style' onClick={()=>incCount(order)}>+</button>
-                                    </p>
-                                    <button className="btn btn-primary" style = {{cursor : 'pointer'}} onClick={()=>handleRemove(order.id)}>remove</button>
-                                </div>
+        
+            cartData.length !==0? 
+            (
+            <div>
+                <h1 style={{textAlign:'center'}}>Order Menu</h1>
+                <div style={{ display: "flex", flexDirection:"column",justifyContent: "space-around",alignItems:"center" }}>
+                    {cartData.map(order => (
+                        <div key={order.id} style={{ border: "1px solid #ccc", margin:"10px",borderRadius: "8px", padding: "10px", width: "900px", display:"flex",justifyContent:"space-between"}}>
+                            <div>
+                            <h4>{order.name}</h4>
+                            <p>Quantity: {order.quantity}</p>
+                            <p>Price: {order.totalPrice}</p>
                             </div>
-                        ))}
-                    </div>
-                     <div>
-                <h4 style={{margin:"8px"}}>Total Price: <span>{price}</span></h4>
-            </div>
-      <div className='aligin-item-end'>
-            <button className='btn btn-info' variant="primary" onClick={handleShow} style={{color:"white" }}>Place The Order</button>
-        </div>
-      <Modal show={show} onHide={handleClose} style={{backgroundImage:"linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250))"}}>
-        <Modal.Header closeButton>
-          <Modal.Title>Order Placed Successfully</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>we deliver your order within 25 minutes enjoy your FOOD</Modal.Body>
-        <div className='delivery-icon-container'><MdDeliveryDining className='animated-element bounce-out-right' style={{color:"blue",marginLeft:"15px",width:"45px",height:"45px"}}/></div>
-      </Modal>
+                            <div>
+                                <p className='quantity-container'>
+                                    <button className='btn-none-style' onClick={()=>decCount(order)}>-</button>
+                                    {order.quantity}
+                                    <button className='btn-none-style' onClick={()=>incCount(order)}>+</button>
+                                </p>
+                                <button className="btn btn-primary" style = {{cursor : 'pointer'}} onClick={()=>handleRemove(order.id)}>remove</button>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-                ):
-                (
-                    <EmptyCart/>
-                )
-            }
-            
+                 <div>
+            <h4 style={{margin:"8px"}}>Total Price: <span>{price}</span></h4>
         </div>
-    );
-};
+  <div className='aligin-item-end'>
+        <button className='btn btn-info' variant="primary" onClick={handleShow} style={{color:"white" }}>Place The Order</button>
+    </div>
+  <Modal show={show} onHide={handleClose} style={{backgroundImage:"linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250))"}}>
+    <Modal.Header closeButton>
+      <Modal.Title>Order Placed Successfully</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>we deliver your order within 25 minutes enjoy your FOOD</Modal.Body>
+    <div className='delivery-icon-container'><MdDeliveryDining className='animated-element bounce-out-right' style={{color:"blue",marginLeft:"15px",width:"45px",height:"45px"}}/></div>
+  </Modal>
+            </div>
+            ):
 
+            (
+                <EmptyCart/>
+            )
+        
+        )
+    }
 
