@@ -3,11 +3,17 @@ import { Formik,ErrorMessage,Field,Form } from "formik";
 import * as yup from "yup";
 import './register.css';
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
 export const Register=()=>{
     let [status,setStatus] = useState('');
     let navigate = useNavigate();
+    useEffect(()=>{
+      let token = localStorage.getItem('token');
+      if(token){
+        navigate('/');
+      }
+    },[]);
 
     let validationSchema = yup.object({
         email : yup.string().email("invalid email formate").required('Email is required'),
@@ -57,7 +63,11 @@ export const Register=()=>{
             <Field className='formik-input' name="roles" id='roles' type='text' placeholder="Enter space seperated roles"/>
             <ErrorMessage name="roles" component="div" className="danger"/>
         </div>
+        <div>
+            <span style={{textAlign:"center"}}>If you have already registered , login here </span><Link to='/login'>login</Link>
+          </div>
         <button type='submit' className="btn btn-primary">Submit</button>
+
     </Form>
     
 </Formik>

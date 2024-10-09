@@ -23,6 +23,7 @@
 .menu-list{
     /* padding: 15px 12vw; */
     background-image:linear-gradient(to right, rgb(211, 247, 127),rgb(108, 222, 250));
+    height:100vh;
     /* padding-top:30px; */
     
 }
